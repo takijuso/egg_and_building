@@ -1,4 +1,4 @@
-require "./optimal_value_finder.rb"
+require "./sub_problem_solver.rb"
 require "./sample_problem.rb"
 
 # 最適化モジュール
