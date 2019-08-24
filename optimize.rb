@@ -1,12 +1,14 @@
 require "./optimal_value_finder.rb"
-require "./problem"
+require "./sample_problem.rb"
 
-# 最適化エンジンクラス
+# 譛驕ｩ蛹悶お繝ｳ繧ｸ繝ｳ繧ｯ繝ｩ繧ｹ
 class Optimizer
 	include OptimalValueFinder
 	
 	def output_optimal_value
 		optimal_value = find_optimal_value(FLOOR, EGG)
-		puts(最適な戦略において、卵の投下回数の最悪値は #{optimal_value} 回です。)
+		puts("譛驕ｩ縺ｪ謌ｦ逡･縺ｫ縺翫＞縺ｦ縲∝嵯縺ｮ謚穂ｸ句屓謨ｰ縺ｮ譛謔ｪ蛟､縺ｯ #{optimal_value} 蝗槭〒縺吶�")
+	end
 end
 
+Optimizer.new.output_optimal_value

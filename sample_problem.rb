@@ -1,5 +1,5 @@
-# ���
-# �Ƃ肠�����AGoogle�̓��Ў������i�K��100�K�A��2�j���i�[
+# 問題
+# とりあえず、Googleの入社試験問題（階数100階、卵2個）を格納
 
-FLOORS = 100
-EGGS = 2
+FLOOR = 5
+EGG = 2
