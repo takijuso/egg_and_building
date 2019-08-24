@@ -3,9 +3,9 @@ module OptimalValueFinder
 	# 引数として、問題となるビルの階数 と 卵の個数の初期値を受け取る
 	
 	def find_optimal_value(number_of_floor, number_of_eggs)
-		puts("--------")
-		puts("floor: #{number_of_floor} ")
-		puts("egg: #{number_of_eggs} ")
+		#puts("--------")
+		#puts("floor: #{number_of_floor} ")
+		#puts("egg: #{number_of_eggs} ")
 		array_for_dp = Array.new(number_of_floor + 1 + 1) { Array.new(number_of_eggs + 1, nil) }
 		# DP(Dinamic Programming, 動的計画法)で解く
 		# array_for_dpは1オリジンで運用する
@@ -40,18 +40,19 @@ module OptimalValueFinder
 					 array_for_dp[number_of_floor - trial_floor][number_of_eggs] = find_optimal_value(number_of_floor - trial_floor, number_of_eggs)
 					# puts(worst_number_of_trials_in_case_of_not_crash)
 				end
-				worst_number_of_trials_in_case_of_not_crash = array_for_dp[number_of_floor - trial_floor][number_of_eggs]
+				worst_number_of_trials_in_case_of_not_crash = array_for_dp[number_of_floor - trial_floor][number_of_eggs] + 1
 				
 				if array_for_dp[trial_floor - 1][number_of_eggs - 1].nil?
 					array_for_dp[trial_floor - 1][number_of_eggs - 1] = worst_number_of_trials_in_case_of_crash = find_optimal_value(trial_floor - 1, number_of_eggs - 1)
 					# puts(worst_number_of_trials_in_case_of_crash)
 				end
-				worst_number_of_trials_in_case_of_crash = array_for_dp[trial_floor - 1][number_of_eggs - 1]
+				worst_number_of_trials_in_case_of_crash = array_for_dp[trial_floor - 1][number_of_eggs - 1] + 1
 				
 				objective_value[trial_floor] = [worst_number_of_trials_in_case_of_not_crash, worst_number_of_trials_in_case_of_crash].max
 				
 			end
-			optimal_value = objective_value.compact.max
+			optimal_value = objective_value.compact.min
+			#puts("階数 #{number_of_floor} , 卵の数 #{number_of_eggs} 個のとき、\n各試行階の最悪値は #{objective_value} 。")
 			
 			# puts("階数 #{number_of_floor} , 卵の数 #{number_of_eggs} 個のとき、最悪値は #{optimal_value} 。")
 			
